@@ -1,0 +1,8 @@
+RewriteEngine On
+
+# If the requested DIRECTORY exists execute below RewriteRule
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^(.*)$ ../index.php?url=$1&code=403 [L,QSA]
+# If the requested FILE doesn't exists execute below RewriteRule
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^(.*)$ ../index.php?url=$1&code=404 [L,QSA]

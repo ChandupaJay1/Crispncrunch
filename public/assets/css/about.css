@@ -1,0 +1,13 @@
+ul > li{
+    margin: 10px 0;
+}
+
+.about-video{
+    display: flex;
+    justify-content: center;
+}
+
+.about-video iframe{
+    width: 77.142857145vw;
+    height: 50vw;
+}

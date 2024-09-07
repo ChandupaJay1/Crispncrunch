@@ -1,0 +1,13 @@
+RewriteEngine On
+
+# Check if the requested FILE doesn't exists
+RewriteCond %{REQUEST_FILENAME} !-f
+# Add trailing '/' if not exists
+RewriteCond %{REQUEST_URI} !^(.*)/$
+# Loop again after adding a trailing '/'
+RewriteRule ^(.*)$ $1/ [N,L]
+
+# Check if the requested FILE doesn't exists
+RewriteCond %{REQUEST_FILENAME} !-f
+# Forward requests to front controller
+RewriteRule ^(.*)$ index.php?uri=$1 [NC,L,QSA]

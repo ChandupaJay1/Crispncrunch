@@ -1,0 +1,264 @@
+/* Light mode values */
+body {
+  --clr-txt-custom-1: #5b5be3;
+
+  --clr-card-shadow: rgba(0, 0, 0, 0.2);
+  --clr-card-bg-transparent: rgba(255, 255, 255, 0.3);
+}
+
+/* Dark mode values */
+body.dark-mode {
+  --clr-txt-custom-1: #2fa3de;
+
+  --clr-card-shadow: rgba(255, 255, 255, 0.1);
+  --clr-card-bg-transparent: rgba(0, 0, 0, 0.3);
+}
+
+body {
+  font-family: var(--ff-main);
+  background: var(--clr-bg);
+  transition:
+    background 0.5s,
+    color 0.5s;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 14px !important;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  color: var(--clr-txt-title);
+}
+
+h1 {
+  font-size: 3.5rem;
+}
+
+h2 {
+  font-size: 2.25rem;
+}
+
+h3 {
+  font-size: 2rem;
+}
+
+h4 {
+  font-size: 1.75rem;
+}
+
+/* Main */
+
+.title {
+  /* text-align: center; */
+}
+
+.grid {
+  display: grid;
+}
+
+.grid-col-span-1 {
+  grid-column: span 1;
+}
+
+.grid-col-span-2 {
+  grid-column: span 2;
+}
+
+.grid-col-span-3 {
+  grid-column: span 3;
+}
+.blog-grid {
+  display: grid;
+}
+
+.blog-card {
+  --webkit-backdrop-filter: unset;
+  backdrop-filter: unset;
+
+  width: 90%;
+  border-radius: 1em;
+  -webkit-filter: drop-shadow(0 0 15px var(--clr-card-shadow));
+  filter: drop-shadow(0 0 15px var(--clr-card-shadow));
+  background-color: var(--clr-card-bg);
+}
+
+.blog-card > .wrapper {
+  padding: 1em;
+  align-items: center;
+}
+
+.blog-card > .wrapper > .date {
+  /* justify-self: start; */
+}
+
+.blog-card .title {
+  color: var(--clr-txt-title);
+  margin-top: 1svh;
+}
+
+.blog-card .date {
+  font-size: 1rem;
+  color: var(--clr-txt-custom-1);
+}
+
+.blog-card .body {
+  font-family: var(--ff-main);
+  font-weight: 500;
+  font-size: 1.3rem;
+  color: var(--clr-txt-primary);
+}
+
+.blog-card .image {
+  background-repeat: no-repeat;
+  background-size: 120%;
+  background-position: center;
+  border-radius: 1em;
+  align-self: center;
+  min-width: max(100%, 15em);
+  min-height: 8em;
+  transition: background-size 0.5s ease;
+}
+
+.blog-card:hover .image {
+  background-size: 100%;
+}
+
+.latest-blogs {
+  margin-top: 2em;
+}
+
+.latest-blogs .container > .title {
+  margin-bottom: 1em;
+}
+
+.latest-blogs .blog-grid {
+  gap: 2em;
+  justify-items: center;
+}
+
+.latest-blogs .blog-grid > * {
+  justify-self: center;
+}
+
+/* Media Query for low resolution  Tablets, Ipads */
+@media (min-width: 576px) {
+  .blog-card {
+    width: auto;
+    border: 1px solid var(--clr-border-transparent);
+  }
+
+  .blog-card > .wrapper {
+    grid-template-columns: 1fr 1fr;
+    gap: 0 1em;
+  }
+
+  .blog-card .image {
+    align-self: center;
+    justify-self: center;
+    min-width: min(100%, 15em);
+    min-height: max(50%, 8em);
+    grid-column-start: 1;
+    grid-row-start: 3;
+  }
+
+  /* .blog-card[img-pos="right"] .image { */
+  /*   align-self: center; */
+  /*   justify-self: center; */
+  /*   min-width: min(100%, 15em); */
+  /*   min-height: max(50%, 8em); */
+  /*   grid-column-start: 1; */
+  /*   grid-row-start: 3; */
+  /* } */
+  .blog-card :where(.title, .date) {
+    align-self: end;
+  }
+
+  .blog-card .title {
+    margin-top: 0;
+    grid-row-start: 1;
+    grid-column: span 2;
+    justify-self: start;
+  }
+
+  .blog-card .date {
+    grid-column: span 2;
+  }
+}
+
+/* Media Query for Tablets Ipads portrait mode */
+@media (min-width: 768px) {
+  .latest-blogs .blog-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .blog-card {
+    background: var(--clr-card-bg-transparent);
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
+    filter: unset;
+    box-shadow: 0 0 15px var(--clr-card-shadow);
+  }
+
+  .blog-card > .wrapper > * {
+    grid-column: none;
+    grid-row: none;
+  }
+
+  .blog-card > .wrapper {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr auto auto 1fr;
+    gap: 0;
+  }
+
+  .blog-card .image {
+    align-self: start;
+    justify-self: start;
+    min-width: max(100%, 15em);
+    min-height: min(100%, 8em);
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  .blog-card :where(.title, .date) {
+    align-self: end;
+  }
+
+  .blog-card .title {
+    justify-self: start;
+    grid-column: 1;
+    grid-row: 2;
+  }
+
+  .blog-card .date {
+    grid-column: 1;
+    grid-row: 3;
+  }
+
+  .blog-card .body {
+    grid-column: 1;
+    grid-row: 4;
+  }
+}
+
+/* Media Query for Laptops and Desktops */
+@media (min-width: 992px) {
+  html {
+    font-size: 15px !important;
+  }
+}
+
+/* Media Query for Large screens */
+@media (min-width: 1281px) {
+  html {
+    font-size: 16px !important;
+  }
+}

@@ -1,0 +1,7 @@
+RewriteEngine on
+
+# Add trailing '/' if not exists
+RewriteCond %{REQUEST_URI} !^(.*)/$
+RewriteRule ^(.*)$ public/$1/ [NC,L,QSA]
+
+RewriteRule ^(.*)$ public/$1 [NC,L,QSA]
